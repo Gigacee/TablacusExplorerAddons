@@ -172,12 +172,12 @@ if (window.Addon == 1) {
 			const Id = await Ctrl.Parent.Id;
 			const item = Ctrl.FolderItem;
 			if (item) {
-				const path = await Ctrl.FolderItem.Path;
+				const path = await item.Path;
 				Addons.InnerAddressBar.path2[Id] = path
 				const o = document.getElementById("inneraddressbar_" + Id);
 				if (o) {
 					o.value = path;
-					Addons.InnerAddressBar.Arrange(await Ctrl.FolderItem, Id);
+					Addons.InnerAddressBar.Arrange(await item, Id);
 					document.getElementById("inneraddr_img_" + Id).src = await GetIconImage(Ctrl, await GetSysColor(COLOR_WINDOW));
 				}
 			}
