@@ -170,13 +170,16 @@ if (window.Addon == 1) {
 
 		ChangeView: async function(Ctrl) {
 			const Id = await Ctrl.Parent.Id;
-			const path = await Ctrl.FolderItem.Path;
-			Addons.InnerAddressBar.path2[Id] = path
-			const o = document.getElementById("inneraddressbar_" + Id);
-			if (o) {
-				o.value = path;
-				Addons.InnerAddressBar.Arrange(await Ctrl.FolderItem, Id);
-				document.getElementById("inneraddr_img_" + Id).src = await GetIconImage(Ctrl, await GetSysColor(COLOR_WINDOW));
+			const item = Ctrl.FolderItem;
+			if (item) {
+				const path = await Ctrl.FolderItem.Path;
+				Addons.InnerAddressBar.path2[Id] = path
+				const o = document.getElementById("inneraddressbar_" + Id);
+				if (o) {
+					o.value = path;
+					Addons.InnerAddressBar.Arrange(await Ctrl.FolderItem, Id);
+					document.getElementById("inneraddr_img_" + Id).src = await GetIconImage(Ctrl, await GetSysColor(COLOR_WINDOW));
+				}
 			}
 		}
 	};
